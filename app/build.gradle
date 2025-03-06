@@ -1,0 +1,168 @@
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    defaultConfig {
+        applicationId "com.example.nfcapp"
+        minSdk 21
+        //noinspection OldTargetApi
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+    }
+
+    buildFeatures {
+        viewBinding false
+    }
+
+    namespace 'com.example.nfcapp'
+    buildToolsVersion '30.0.3'
+    compileSdk 35
+    dependenciesInfo {
+        includeInApk true
+        includeInBundle true
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            jniDebuggable true
+            renderscriptDebuggable true
+            minifyEnabled false
+        }
+    }
+
+    // Create schemas directory - using fileTree approach to avoid config cache issues
+    def roomSchemaDir = new File(projectDir, "schemas")
+    roomSchemaDir.mkdirs()
+
+    // Simplified KAPT configuration with fewer runtime dependencies
+    kapt {
+        // Basic settings
+        correctErrorTypes = true
+        useBuildCache = true
+
+        // Configure Java compilation options
+        javacOptions {
+            option("-source", "17")
+            option("-target", "17")
+        }
+        
+        // Room arguments with hardcoded paths to avoid configuration-time references
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+            arg("room.incremental", "true")
+        }
+    }
+
+    // Fix KAPT processing with newer Kotlin/Gradle versions
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            // Ensure compatibility with Java 17
+            jvmTarget = "17"
+            
+            // Explicit language version to match Kotlin version
+            languageVersion = "1.9"
+            apiVersion = "1.9"
+            
+            // Simplified compiler options without experimental features
+            freeCompilerArgs += [
+                "-opt-in=kotlin.RequiresOptIn"
+            ]
+        }
+    }
+}
+dependencies {
+    // Kotlin - use explicit version matching root build.gradle
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // AndroidX Core and AppCompat
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.10.0'
+
+    // Layout and UI
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // NFC API Dependencies
+    // No additional dependencies needed as core-ktx includes NFC support
+
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
+
+    // Coroutines for async operations
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'com.google.firebase:firebase-auth:23.2.0'
+    implementation 'androidx.credentials:credentials:1.5.0-rc01'
+    implementation 'androidx.credentials:credentials-play-services-auth:1.3.0'
+    implementation 'com.google.android.libraries.identity.googleid:googleid:1.1.1'
+    // Compatible with Kotlin 1.9
+
+    // Room for database storage
+    def room_version = '2.5.2'  // Compatible with SDK 34
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // Removed duplicate room compiler implementation
+
+    // Biometric authentication
+    implementation 'androidx.biometric:biometric:1.1.0'
+
+    // Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+
+    // Gson for JSON parsing
+    implementation 'com.google.code.gson:gson:2.12.1'
+
+    // Security Crypto
+    implementation 'androidx.security:security-crypto:1.0.0'
+
+    // Navigation Component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.5'
+
+    // ViewPager2 for card swiping
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+
+    implementation platform('com.google.firebase:firebase-bom:33.1.2')
+    // Declare the dependencies for the desired Firebase products without specifying versions
+    // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+}
+
+// Resolve duplicate classes issue between different annotations libraries
+configurations.all {
+    resolutionStrategy {
+        // Force the newer version of annotations
+        force 'org.jetbrains:annotations:23.0.0'
+    }
+    // Exclude the older annotations library
+    exclude group: 'com.intellij', module: 'annotations'
+}

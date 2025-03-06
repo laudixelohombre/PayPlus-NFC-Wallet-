@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CardDetailsActivity">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Card Details" />
+
+    <!-- Scrollable content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Card Preview (larger version) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPreviewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- Card UI with background color that changes based on card type -->
+                <FrameLayout
+                    android:id="@+id/cardBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/card_default">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <!-- Card Network Logo (top right) -->
+                        <ImageView
+                            android:id="@+id/cardLogo"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:contentDescription="Card network logo"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@android:drawable/ic_menu_gallery" />
+
+                        <!-- Card Number -->
+                        <TextView
+                            android:id="@+id/cardNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.1"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cardLogo"
+                            tools:text="**** **** **** 1234" />
+
+                        <!-- Card Details (bottom row) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="parent">
+
+                            <!-- Cardholder Name -->
+                            <TextView
+                                android:id="@+id/cardholderName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="sans-serif-medium"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                tools:text="JOHN DOE" />
+
+                            <!-- Expiry Date -->
+                            <TextView
+                                android:id="@+id/expiryDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:textColor="#FFFFFF"
+                                android:textSize="14sp"
+                                tools:text="MM/YY" />
+
+                        </LinearLayout>
+
+                        <!-- Default card indicator -->
+                        <TextView
+                            android:id="@+id/defaultCardIndicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_background"
+                            android:padding="4dp"
+                            android:text="Default"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:visibility="gone"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card Details Section -->
+            <TextView
+                android:id="@+id/detailsSectionHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Card Details"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/cardPreviewContainer" />
+
+            <!-- Card Number Details -->
+            <TextView
+                android:id="@+id/cardNumberLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Card Number"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailsSectionHeader" />
+
+            <TextView
+                android:id="@+id/cardNumberValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardNumberLabel"
+                app:layout_constraintTop_toTopOf="@id/cardNumberLabel"
+                tools:text="**** **** **** 1234" />
+
+            <!-- Expiry Date Details -->
+            <TextView
+                android:id="@+id/expiryDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Expiry Date"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardNumberValue" />
+
+            <TextView
+                android:id="@+id/expiryDateValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/expiryDateLabel"
+                app:layout_constraintTop_toTopOf="@id/expiryDateLabel"
+                tools:text="09/25" />
+
+            <!-- Cardholder Name Details -->
+            <TextView
+                android:id="@+id/cardholderNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Cardholder"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expiryDateValue" />
+
+            <TextView
+                android:id="@+id/cardholderNameValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardholderNameLabel"
+                app:layout_constraintTop_toTopOf="@id/cardholderNameLabel"
+                tools:text="John Doe" />
+
+            <!-- Card Type Details -->
+            <TextView
+                android:id="@+id/cardTypeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Card Type"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardholderNameValue" />
+
+            <TextView
+                android:id="@+id/cardTypeValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardTypeLabel"
+                app:layout_constraintTop_toTopOf="@id/cardTypeLabel"
+                tools:text="Credit" />
+
+            <!-- Card Network Details -->
+            <TextView
+                android:id="@+id/cardNetworkLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Card Network"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardTypeValue" />
+
+            <TextView
+                android:id="@+id/cardNetworkValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardNetworkLabel"
+                app:layout_constraintTop_toTopOf="@id/cardNetworkLabel"
+                tools:text="Visa" />
+
+            <!-- Card Status Details -->
+            <TextView
+                android:id="@+id/cardStatusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Status"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardNetworkValue" />
+
+            <TextView
+                android:id="@+id/cardStatusValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardStatusLabel"
+                app:layout_constraintTop_toTopOf="@id/cardStatusLabel"
+                tools:text="Active" />
+
+            <!-- Date Added Details -->
+            <TextView
+                android:id="@+id/dateAddedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Added On"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardStatusValue" />
+
+            <TextView
+                android:id="@+id/dateAddedValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/dateAddedLabel"
+                app:layout_constraintTop_toTopOf="@id/dateAddedLabel"
+                tools:text="Jan 15, 2025" />
+
+            <!-- Last Used Details -->
+            <TextView
+                android:id="@+id/lastUsedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Last Used"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dateAddedValue" />
+
+            <TextView
+                android:id="@+id/lastUsedValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lastUsedLabel"
+                app:layout_constraintTop_toTopOf="@id/lastUsedLabel"
+                tools:text="Feb 28, 2025" />
+
+            <!-- Card Actions Section -->
+            <TextView
+                android:id="@+id/actionsSectionHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Card Actions"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/lastUsedValue" />
+
+            <!-- Set as Default Button -->
+            <Button
+                android:id="@+id/setDefaultButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Set as Default Card"
+                app:layout_constraintTop_toBottomOf="@id/actionsSectionHeader" />
+
+            <!-- Enable/Disable Button -->
+            <Button
+                android:id="@+id/toggleEnabledButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Disable Card"
+                app:layout_constraintTop_toBottomOf="@id/setDefaultButton" />
+
+            <!-- Delete Card Button (danger action) -->
+            <Button
+                android:id="@+id/deleteCardButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:text="Delete Card"
+                android:textColor="#F44336"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toggleEnabledButton"
+                app:strokeColor="#F44336" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

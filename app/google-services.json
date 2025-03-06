@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "612092148800",
+    "project_id": "nfcpayment-99807",
+    "storage_bucket": "nfcpayment-99807.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612092148800:android:b3d3734e51b08cc523b3a5",
+        "android_client_info": {
+          "package_name": "com.example.nfcapp.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612092148800-4qmncbtlgubuosjahshi11cjicmcr8r2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIlEsf0rRQ_FIN0DZb594ghhjH-Q_dypc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612092148800-4qmncbtlgubuosjahshi11cjicmcr8r2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

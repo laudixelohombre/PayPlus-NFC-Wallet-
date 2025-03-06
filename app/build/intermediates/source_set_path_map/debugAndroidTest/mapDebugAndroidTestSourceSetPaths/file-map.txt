@@ -1,0 +1,6 @@
+com.example.nfcapp.test.app-tracing-1.2.0-0 C:\Users\laudixelohombre\.gradle\caches\8.10.2\transforms\02ad30ef95ce12f8a1caa7b27fa2ea7a\transformed\tracing-1.2.0\res
+com.example.nfcapp.test.app-core-1.6.1-1 C:\Users\laudixelohombre\.gradle\caches\8.10.2\transforms\44b51ead0a960448f4f9588f312a2914\transformed\core-1.6.1\res
+com.example.nfcapp.test.app-androidTest-2 C:\Users\laudixelohombre\Documents\NFCAPP\app\build\generated\res\resValues\androidTest\debug
+com.example.nfcapp.test.app-mergeDebugAndroidTestResources-3 C:\Users\laudixelohombre\Documents\NFCAPP\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.nfcapp.test.app-mergeDebugAndroidTestResources-4 C:\Users\laudixelohombre\Documents\NFCAPP\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.nfcapp.test.app-debugAndroidTest-5 C:\Users\laudixelohombre\Documents\NFCAPP\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

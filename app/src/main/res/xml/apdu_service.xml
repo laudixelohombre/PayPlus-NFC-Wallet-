@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/payment_service_description"
+    android:requireDeviceUnlock="false">
+
+    <!-- Visa Payment AIDs -->
+    <aid-group
+        android:category="payment"
+        android:description="@string/visa_payment_description">
+        <aid-filter android:name="A0000000031010" />  <!-- Visa Credit/Debit -->
+        <aid-filter android:name="A0000000032010" />  <!-- Visa Electron -->
+        <aid-filter android:name="A0000000038010" />  <!-- Visa V PAY -->
+        <aid-filter android:name="A0000000039010" />  <!-- Visa Plus -->
+    </aid-group>
+
+    <!-- Mastercard Payment AIDs -->
+    <aid-group
+        android:category="payment"
+        android:description="@string/mastercard_payment_description">
+        <aid-filter android:name="A0000000041010" />  <!-- Mastercard Credit/Debit -->
+        <aid-filter android:name="A0000000042010" />  <!-- MasterCard Specific -->
+        <aid-filter android:name="A0000000043060" />  <!-- Maestro -->
+        <aid-filter android:name="A0000000049999" />  <!-- Cirrus -->
+    </aid-group>
+
+    <!-- Other Payment AIDs -->
+    <aid-group
+        android:category="payment"
+        android:description="@string/other_payment_description">
+        <aid-filter android:name="A0000000651010" />  <!-- JCB -->
+        <aid-filter android:name="A0000002771010" />  <!-- American Express -->
+        <aid-filter android:name="A0000001523010" />  <!-- Discover -->
+        <aid-filter android:name="A0000000031020" />  <!-- Dynamic AID -->
+    </aid-group>
+
+</host-apdu-service>

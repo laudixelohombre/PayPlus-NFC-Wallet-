@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_activity_transaction_history.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/activity_transaction_history.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/drawable_rounded_background.xml.flat",
+        "source": "com.example.nfcapp-main-66:/drawable/rounded_background.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_item_card.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/item_card.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.nfcapp-main-66:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_activity_main.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.nfcapp-main-66:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.nfcapp-main-66:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_activity_payment_success.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/activity_payment_success.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.nfcapp-main-66:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/xml_apdu_service.xml.flat",
+        "source": "com.example.nfcapp-main-66:/xml/apdu_service.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/drawable_tab_selector.xml.flat",
+        "source": "com.example.nfcapp-main-66:/drawable/tab_selector.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_activity_card_details.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/activity_card_details.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.nfcapp-main-66:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_activity_add_card.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/activity_add_card.xml"
+    },
+    {
+        "merged": "com.example.nfcapp-debug-64:/layout_item_transaction.xml.flat",
+        "source": "com.example.nfcapp-main-66:/layout/item_transaction.xml"
+    }
+]
